@@ -1,2 +1,1 @@
-# todolaravel
-Úkolovníček v Laravelu
+# Úkolovníček v Laravelu
