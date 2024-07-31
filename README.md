@@ -1,9 +1,9 @@
-# Úkolovníček v Laravelu
+# Todo in Laravel
 
 composer update
 
 php artisan serve
 
-& v .env
+.env
 
 DB_CONNECTION=sqlite
