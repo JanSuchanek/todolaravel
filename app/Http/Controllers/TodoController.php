@@ -34,6 +34,8 @@ class TodoController extends Controller
 
     public function update(Todo $todo, Request $request){
 
+        $data = $request->all();
+
         try {
             $request->validate([
                 'name' => ['required'],
@@ -41,9 +43,11 @@ class TodoController extends Controller
            
             ]);
         } catch (ValidationException $e) {
-            session()->flash('success', 'Zadejte prosím všechny povinné údaje.');
-            return redirect('/');
+            return redirect()->action(
+                [TodoController::class, 'edit'], ['todo' => $todo]
+            )->with('error', 'Prosím vyplňte všechny povinné údaje.');;
         }
+
 
         $data = $request->all();
        
@@ -73,8 +77,9 @@ class TodoController extends Controller
                 'description' => ['required']
             ]);
         } catch (ValidationException $e) {
-            session()->flash('success', 'Zadejte prosím všechny povinné údaje.');
-            return redirect('/');
+            return redirect()->action(
+                [TodoController::class, 'create'],
+            )->with('error', 'Prosím vyplňte všechny povinné údaje.');;
         }
 
         $data = request()->all();
