@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class TodoController extends Controller
 {
@@ -40,8 +41,8 @@ class TodoController extends Controller
            
             ]);
         } catch (ValidationException $e) {
-            print_($e);
-            die;            
+            session()->flash('success', 'Zadejte prosím všechny povinné údaje.');
+            return redirect('/');
         }
 
         $data = $request->all();
@@ -72,8 +73,8 @@ class TodoController extends Controller
                 'description' => ['required']
             ]);
         } catch (ValidationException $e) {
-            print_($e);
-            die;
+            session()->flash('success', 'Zadejte prosím všechny povinné údaje.');
+            return redirect('/');
         }
 
         $data = request()->all();

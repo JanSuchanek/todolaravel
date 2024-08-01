@@ -14,7 +14,7 @@
                         {{$todo->name}}
                         <a href="/details/{{$todo->id}}"><span class="btn btn-default">Zobrazit</span></a> 
                         <a href="/edit/{{$todo->id}}"><span class="btn btn-primary">Upravit</span></a>
-                        <a href="/delete/{{$todo->id}}" onclick="return confirm('Opravdu chcete tento úkol smazat?')"><span class="btn btn-danger">Smaza</span></a>
+                        <a href="/delete/{{$todo->id}}" onclick="return confirm('Opravdu chcete tento úkol smazat?')"><span class="btn btn-danger">Smazat</span></a>
                     </li>
                 @endforeach
             </ul>
